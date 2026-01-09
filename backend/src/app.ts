@@ -11,15 +11,20 @@ const corsOptions = {
 
 const createApp = () => {
   const app = express();
+
   app.use(cors(corsOptions));
+
   app.use(json());
+
   app.use(urlencoded({ extended: true }));
+
   app.use(errorHandler);
 
   // testing
   app.get("/", (req, res) => {
     res.status(200).redirect("/dinesh");
   });
+
   app.use("api/menu", router);
 
   return app;
